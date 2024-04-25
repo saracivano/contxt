@@ -1,38 +1,38 @@
-# create-svelte
+U ovom readme dokumentu se nalaze upute za instalaciju i pokretanje servera.
+Upute podrazumijevaju da je git već instaliran na sustav.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+## Instalacija WSL-a
+Za pokretanje Dockera potreban je WSL 2 (Windows Subsystem for Linux), koji se može instalirati u Windowsu.
+Pobrinite se da je uključena virtualizacija u BIOS-u sustava te da je u Windows značajkama uključen Hyper-V (ili Windows Hypervisor platform ako Hyper-V nije dostupan)
 
-## Creating a project
+Naredba za CMD
+```
+wsl install
+```
+## Instalacija Dockera
+Preuzmite [Docker desktop](https://www.docker.com/products/docker-desktop/) za Windows i prođite kroz proces instalacije.
+Nakon instalacije pokrenite
+```
+docker --version
+```
+kako bi ste se uvjerili da je Docker uspješno instaliran.
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+## Postavljanje projekta
+Klonirajte git repositorij ovog projekta u željenu mapu s naredbom
+```
+git clone htttps://github.com/saracivano/contxt.git .
 ```
 
-## Developing
+Izradite Docker image iz Dockerfilea projekta s naredbom
+```
+docker build -t (ime) . 
+```
+(zamijenite ime s imenom po želji)
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+## Pokretanje servera
+Pokrenite server pomoću naredbe
+```
+docker run -p 8000:8000 (ime)
 ```
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Server bi trebao biti aktivan na adresi [localhost:8000](localhost:8000)
